@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0
 
-// Amended by HashLips
+// Revisado y probado por juazti y enseñado en el canal de youtube 
 /**
-    !Disclaimer!
-    These contracts have been used to create tutorials,
-    and was created for the purpose to teach people
-    how to create smart contracts on the blockchain.
-    please review this code on your own before using any of
-    the following code for production.
-    HashLips will not be liable in any way if for the use 
-    of the code. That being said, the code has been tested 
-    to the best of the developers' knowledge to work as intended.
+     Estos contratos se han utilizado para crear tutoriales,
+    y fueron creados con el propósito de enseñar a las personas
+    cómo crear contratos inteligentes en la cadena de bloques.
+    Revise este código por su cuenta.
+    juazti no será responsable de ninguna manera por el uso 
+    del código. Dicho esto, el código ha sido probado y funciona
+    
 */
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -159,15 +157,15 @@ contract NFT is ERC721Enumerable, Ownable {
   }
  
   function withdraw() public payable onlyOwner {
-    // This will pay HashLips 5% of the initial sale.
-    // You can remove this if you want, or keep it in to support HashLips and his channel.
+    // Esto pagará a juazti el 5% de la venta inical
+    // Puede eliminar esto si lo desea, o mantenerlo para admitir HashLips y su canal.
     // =============================================================================
-    (bool hs, ) = payable(0x943590A42C27D08e3744202c4Ae5eD55c2dE240D).call{value: address(this).balance * 5 / 100}("");
+    (bool hs, ) = payable(0xC444AEb5dEc3A1E30948d0EEA2a26B4F087c336F).call{value: address(this).balance * 5 / 100}("");
     require(hs);
     // =============================================================================
     
-    // This will payout the owner 95% of the contract balance.
-    // Do not remove this otherwise you will not be able to withdraw the funds.
+    // Esto pagará al propietario el 95% del saldo del contrato..
+    // No elimine esto, de lo contrario no podrá retirar los fondos.
     // =============================================================================
     (bool os, ) = payable(owner()).call{value: address(this).balance}("");
     require(os);
